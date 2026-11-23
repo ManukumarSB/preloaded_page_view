@@ -1,4 +1,4 @@
-/// A PageView that builds the next and previous N pages ahead of time, so videos, images and feeds are ready before you swipe. Zero dependencies.
+/// A PageView that builds the next and previous N pages ahead of time.
 library;
 
-// export 'src/...';
+export 'src/preloaded_page_view.dart';
