@@ -7,11 +7,20 @@ A `PageView` that builds the next and previous pages before you swipe to
 them, so a video has already buffered or an image has already decoded by the
 time it's on screen.
 
-Flutter's `PageView` only ever builds what's visible (or one extra page with
-`allowImplicitScrolling`). There's a [TODO in the framework](https://github.com/flutter/flutter/issues/45632)
-for this and an [open issue](https://github.com/flutter/flutter/issues/31191)
-with 130+ upvotes. This package fills the gap using the same building blocks
-`PageView` does, with no dependencies.
+Until Flutter 3.44, `PageView` could only build what's visible (or one extra
+page with `allowImplicitScrolling`) — see [flutter#31191](https://github.com/flutter/flutter/issues/31191)
+and [flutter#45632](https://github.com/flutter/flutter/issues/45632). This
+package works on Flutter 3.32 and up, with no dependencies, and on any version
+it gives you a few things `PageView` doesn't:
+
+- **Counts in pages, not viewports.** `preloadPagesCount: 2` means two pages
+  each side, whatever your `viewportFraction` or `padEnds`.
+- **Knows which page is on screen.** `isCurrentPage` lets a preloaded video
+  wait, and rebuilds only the two pages that changed on a swipe.
+- **A drop-in for `preload_page_view`**, which hasn't been updated since 2023.
+
+If you're on Flutter 3.44+, use full-width pages and don't need any of the
+above, `PageView(scrollCacheExtent: ...)` may be all you need.
 
 <img src="doc/compare.png" width="560" alt="Left: PageView shows a buffering spinner after a swipe. Right: PreloadedPageView with preloadPagesCount 2 shows the page already loaded.">
 
