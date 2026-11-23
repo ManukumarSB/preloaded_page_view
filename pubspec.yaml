@@ -17,3 +17,15 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
+
+topics:
+  - pageview
+  - widget
+  - performance
+  - video
+
+screenshots:
+  - description: PageView buffering after a swipe next to PreloadedPageView with the page already loaded.
+    path: doc/compare.png
+  - description: A reels-style feed from the example app.
+    path: doc/feed.png
