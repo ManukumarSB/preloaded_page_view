@@ -230,7 +230,7 @@ class _PreloadedPageViewState extends State<PreloadedPageView> {
 
   /// How far past the viewport to build, in viewports.
   ///
-  /// This is the whole trick: PageView hard-codes it to 0 or 1 viewport
+  /// Before Flutter 3.44, PageView hard-coded this to 0 or 1 viewport
   /// (flutter/flutter#45632). One page is [fraction] of a viewport, so N
   /// pages is N * fraction.
   double _cacheExtent(double fraction) => widget.preloadPagesCount * fraction;
@@ -285,7 +285,11 @@ class _PreloadedPageViewState extends State<PreloadedPageView> {
               ScrollConfiguration.of(context).copyWith(scrollbars: false),
           viewportBuilder: (context, position) {
             return Viewport(
+              // Flutter 3.44 replaced these with scrollCacheExtent, which
+              // doesn't exist on 3.32. Switch once the floor reaches 3.44.
+              // ignore: deprecated_member_use
               cacheExtent: _cacheExtent(controller.viewportFraction),
+              // ignore: deprecated_member_use
               cacheExtentStyle: CacheExtentStyle.viewport,
               axisDirection: axisDirection,
               offset: position,
