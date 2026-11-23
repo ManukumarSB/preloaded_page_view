@@ -1,16 +1,10 @@
-# example
+# preloaded_page_view example
 
-A new Flutter project.
+A reels-style vertical feed. Each clip pretends to buffer for a second when
+it's built, like a real video. Switch the preload count in the app bar between
+0 and 3 and swipe: with 0 every clip shows a spinner, with 2 they're ready.
+The dots on the right show which pages are currently built.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```sh
+flutter run
+```
